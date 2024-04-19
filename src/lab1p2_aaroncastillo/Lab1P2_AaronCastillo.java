@@ -1,5 +1,6 @@
 package lab1p2_aaroncastillo;
 //fila 2, asiento 7;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,8 +25,22 @@ public class Lab1P2_AaronCastillo {
         matriz = generar_matriz(tam);
         imprimir_matriz(matriz);
         System.out.println("Matriz ordenada:");
-        ordenamiento_filas(0, matriz);
-
+        //ordenamiento_filas(0, matriz);
+        for (int j = 0; j < matriz.length; j++) {
+            for (int k = 0; k < matriz[j].length; k++) {
+                if (matriz[j][k] > matriz[j][k + 1]) {
+                    if (matriz[j][k+1]>matriz.length){
+                        //nada
+                    }else{
+                        matriz[j][k] = matriz[j][k + 1];
+                    }
+                    System.out.print("[" + matriz[j][k] + "]");
+                } else {
+                    System.out.print("[" + matriz[j][k] + "]");
+                }
+            }
+            System.out.println();
+        }
     }
 
     public static int[][] generar_matriz(int tam) {
@@ -47,14 +62,14 @@ public class Lab1P2_AaronCastillo {
         }
     }
 
-    public static void ordenamiento_filas(int i, int matriz[][]) {
+    /*public static void ordenamiento_filas(int i, int matriz[][]) {
         if (i >= matriz.length) {
             System.out.println();
         } else {
             for (int j = 0; j < matriz.length; j++) {
                 for (int k = 0; k < matriz[j].length; k++) {
-                    if (matriz[j][k] > matriz[j + 1][k]) {
-                        matriz[j][k] = matriz[j + 1][k];
+                    if (matriz[j][k] > matriz[j][k + 1]) {
+                        matriz[j][k] = matriz[j][k + 1];
                         System.out.print("[" + matriz[j][k] + "]");
                     } else {
                         System.out.print("[" + matriz[j][k] + "]");
@@ -65,5 +80,5 @@ public class Lab1P2_AaronCastillo {
             i = i + 1;
             ordenamiento_filas(i, matriz);
         }
-    }
+    }*/
 }
