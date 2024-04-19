@@ -1,6 +1,7 @@
 package lab1p2_aaroncastillo;
 //fila 2, asiento 7;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Lab1P2_AaronCastillo {
 
     static Scanner leer = new Scanner(System.in);
     static Random random = new Random();
+    static ArrayList<Integer> mediana = new ArrayList();
 
     public static void main(String[] args) {
         System.out.println("Ejercicio práctico – Mediana de medianas");
@@ -26,7 +28,7 @@ public class Lab1P2_AaronCastillo {
         imprimir_matriz(matriz);
         System.out.println("Matriz ordenada:");
         //ordenamiento_filas(0, matriz);
-        for (int j = 0; j < matriz.length; j++) {
+        /*for (int j = 0; j < matriz.length; j++) {
             for (int k = 0; k < matriz[j].length; k++) {
                 if (matriz[j][k] > matriz[j][k + 1]) {
                     if (matriz[j][k+1]>matriz.length){
@@ -40,6 +42,11 @@ public class Lab1P2_AaronCastillo {
                 }
             }
             System.out.println();
+        }*/
+        System.out.println("Arreglo de medianas: ");
+        calculo_mediana(matriz);
+        for (int i = 0; i < mediana.size(); i++) {
+            System.out.print("["+mediana.get(i)+"]");
         }
     }
 
@@ -81,4 +88,16 @@ public class Lab1P2_AaronCastillo {
             ordenamiento_filas(i, matriz);
         }
     }*/
+    public static ArrayList calculo_mediana(int matriz[][]) {
+        int mediana_ = matriz.length;
+        int medio = mediana_ / 2;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] == matriz[i][medio]) {
+                    mediana.add(matriz[i][j]);
+                }
+            }
+        }
+        return mediana;
+    }
 }
