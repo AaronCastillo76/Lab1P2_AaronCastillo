@@ -27,7 +27,7 @@ public class Lab1P2_AaronCastillo {
             matriz2 = ordenamiento_filas(matriz.length, matriz);
             imprimir_matriz(matriz2);
             System.out.println("Arreglo de medianas: ");
-            calculo_mediana(matriz);
+            calculo_mediana(matriz2);
             for (int i = 0; i < mediana.size(); i++) {
                 System.out.print("[" + mediana.get(i) + "]");
             }
@@ -59,11 +59,13 @@ public class Lab1P2_AaronCastillo {
         if (i == 1) {
             return matriz;
         } else {
-            for (int j = 0; j < matriz[0].length - 1; j++) {
-                int[] temp = matriz[j];
-                if (temp[j] > temp[j + 1]) {
-                    matriz[j] = matriz[j + 1];
-                    matriz[j + 1] = temp;
+            for (int j = 0; j < matriz.length; j++) {
+                for (int k = 0; k < matriz[0].length - 1; k++) {
+                    if (k + 1 < matriz[0].length && matriz[j][k] > matriz[j][k + 1]) {
+                        int temp = matriz[j][k];
+                        matriz[j][k] = matriz[j][k + 1];
+                        matriz[j][k + 1] = temp;
+                    }
                 }
             }
             ordenamiento_filas(i - 1, matriz);
