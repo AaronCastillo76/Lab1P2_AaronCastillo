@@ -27,7 +27,9 @@ public class Lab1P2_AaronCastillo {
         matriz = generar_matriz(tam);
         imprimir_matriz(matriz);
         System.out.println("Matriz ordenada:");
-        ordenamiento_filas(0, matriz);
+        ordenamiento_filas(matriz.length, matriz);
+        int[][] matriz2 = new int[matriz.length][matriz[0].length];
+        imprimir_matriz(matriz2);
         System.out.println("Arreglo de medianas: ");
         calculo_mediana(matriz);
         for (int i = 0; i < mediana.size(); i++) {
@@ -54,18 +56,38 @@ public class Lab1P2_AaronCastillo {
         }
     }
 
-    public static void ordenamiento_filas(int i, int matriz[][]) {
-        if (i >= matriz.length) {
-            System.out.println();
+    public static int[][] ordenamiento_filas(int i, int matriz[][]) {
+        if (i == 1) {
+            return matriz;
         } else {
-            for (int j = 0; j < matriz.length; j++) {
-                for (int k = 0; k < matriz[j].length; k++) {
-                    System.out.print("[" + matriz[i][j] + "]");
+            for (int j = 0; j < matriz.length - 1; j++) {
+                int[] temp = matriz[j];
+                if (temp[j] > temp[j + 1]) {
+                    matriz[j] = matriz[j + 1];
+                    matriz[j + 1] = temp;
                 }
-                System.out.println();
             }
-            ordenamiento_filas(i, matriz);
+            ordenamiento_filas(i - 1, matriz);
         }
+        /*if (n == 1)
+            return;
+      
+        // One pass of bubble sort. After
+        // this pass, the largest element
+        // is moved (or bubbled) to end.
+        for (int i=0; i<n-1; i++)
+            if (arr[i] > arr[i+1])
+            {
+                // swap arr[i], arr[i+1]
+                int temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+      
+        // Largest element is fixed,
+        // recur for remaining array
+        bubbleSort(arr, n-1);*/
+        return matriz;
     }
 
     public static ArrayList calculo_mediana(int matriz[][]) {
