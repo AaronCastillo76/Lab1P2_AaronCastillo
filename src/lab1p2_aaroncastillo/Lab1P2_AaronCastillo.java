@@ -27,26 +27,11 @@ public class Lab1P2_AaronCastillo {
         matriz = generar_matriz(tam);
         imprimir_matriz(matriz);
         System.out.println("Matriz ordenada:");
-        //ordenamiento_filas(0, matriz);
-        /*for (int j = 0; j < matriz.length; j++) {
-            for (int k = 0; k < matriz[j].length; k++) {
-                if (matriz[j][k] > matriz[j][k + 1]) {
-                    if (matriz[j][k+1]>matriz.length){
-                        //nada
-                    }else{
-                        matriz[j][k] = matriz[j][k + 1];
-                    }
-                    System.out.print("[" + matriz[j][k] + "]");
-                } else {
-                    System.out.print("[" + matriz[j][k] + "]");
-                }
-            }
-            System.out.println();
-        }*/
+        ordenamiento_filas(0, matriz);
         System.out.println("Arreglo de medianas: ");
         calculo_mediana(matriz);
         for (int i = 0; i < mediana.size(); i++) {
-            System.out.print("["+mediana.get(i)+"]");
+            System.out.print("[" + mediana.get(i) + "]");
         }
     }
 
@@ -69,31 +54,27 @@ public class Lab1P2_AaronCastillo {
         }
     }
 
-    /*public static void ordenamiento_filas(int i, int matriz[][]) {
+    public static void ordenamiento_filas(int i, int matriz[][]) {
         if (i >= matriz.length) {
             System.out.println();
         } else {
             for (int j = 0; j < matriz.length; j++) {
                 for (int k = 0; k < matriz[j].length; k++) {
-                    if (matriz[j][k] > matriz[j][k + 1]) {
-                        matriz[j][k] = matriz[j][k + 1];
-                        System.out.print("[" + matriz[j][k] + "]");
-                    } else {
-                        System.out.print("[" + matriz[j][k] + "]");
-                    }
+                    System.out.print("[" + matriz[i][j] + "]");
                 }
                 System.out.println();
             }
-            i = i + 1;
             ordenamiento_filas(i, matriz);
         }
-    }*/
+    }
+
     public static ArrayList calculo_mediana(int matriz[][]) {
         int mediana_ = matriz.length;
         int medio = mediana_ / 2;
+        System.out.println(medio);
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                if (matriz[i][j] == matriz[i][medio]) {
+                if (matriz[j] == matriz[medio]) {
                     mediana.add(matriz[i][j]);
                 }
             }
