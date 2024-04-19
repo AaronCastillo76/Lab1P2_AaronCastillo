@@ -19,21 +19,20 @@ public class Lab1P2_AaronCastillo {
         if (tam % 2 == 0) {
             System.out.println("Su numero tiene que ser impar y mayor que 4");
         } else if (tam > 4) {
-            System.out.println("si");
+            int[][] matriz = new int[tam][tam];
+            matriz = generar_matriz(tam);
+            imprimir_matriz(matriz);
+            System.out.println("Matriz ordenada:");
+            int[][] matriz2 = new int[matriz.length][matriz[0].length];
+            matriz2 = ordenamiento_filas(matriz.length, matriz);
+            imprimir_matriz(matriz2);
+            System.out.println("Arreglo de medianas: ");
+            calculo_mediana(matriz);
+            for (int i = 0; i < mediana.size(); i++) {
+                System.out.print("[" + mediana.get(i) + "]");
+            }
         } else {
             System.out.println("Su numero tiene que ser impar y mayor que 4");
-        }
-        int[][] matriz = new int[tam][tam];
-        matriz = generar_matriz(tam);
-        imprimir_matriz(matriz);
-        System.out.println("Matriz ordenada:");
-        ordenamiento_filas(matriz.length, matriz);
-        int[][] matriz2 = new int[matriz.length][matriz[0].length];
-        imprimir_matriz(matriz2);
-        System.out.println("Arreglo de medianas: ");
-        calculo_mediana(matriz);
-        for (int i = 0; i < mediana.size(); i++) {
-            System.out.print("[" + mediana.get(i) + "]");
         }
     }
 
@@ -60,7 +59,7 @@ public class Lab1P2_AaronCastillo {
         if (i == 1) {
             return matriz;
         } else {
-            for (int j = 0; j < matriz.length - 1; j++) {
+            for (int j = 0; j < matriz[0].length - 1; j++) {
                 int[] temp = matriz[j];
                 if (temp[j] > temp[j + 1]) {
                     matriz[j] = matriz[j + 1];
@@ -69,24 +68,6 @@ public class Lab1P2_AaronCastillo {
             }
             ordenamiento_filas(i - 1, matriz);
         }
-        /*if (n == 1)
-            return;
-      
-        // One pass of bubble sort. After
-        // this pass, the largest element
-        // is moved (or bubbled) to end.
-        for (int i=0; i<n-1; i++)
-            if (arr[i] > arr[i+1])
-            {
-                // swap arr[i], arr[i+1]
-                int temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
-            }
-      
-        // Largest element is fixed,
-        // recur for remaining array
-        bubbleSort(arr, n-1);*/
         return matriz;
     }
 
